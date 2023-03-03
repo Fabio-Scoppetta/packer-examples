@@ -24,7 +24,7 @@ source "amazon-ebs" "ubuntu" {
 }
 
 build {
-  name = "agora-com-amsible"
+  name = "packer-amsible"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
@@ -34,10 +34,10 @@ build {
       "echo \"Rodando o comando apt update\"",
       "sleep 3",
       "sudo apt-add-repository ppa:ansible/ansible",
-      "sudo apt update",
+      "sudo apt update 2>/dev/null",
       "echo \"instalando o ansible\"",
       "sleep 10",
-      "sudo apt install -y ansible",
+      "sudo apt install -y ansible 2> /dev/null",
     ]
   }
 
