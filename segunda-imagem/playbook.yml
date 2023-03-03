@@ -1,0 +1,28 @@
+---
+# playbook.yml
+- name: 'Provision Image'
+  hosts: all
+  become: true
+
+
+  tasks:
+   - name: Update all packages to their latest version
+     ansible.builtin.apt:
+       name: "*"
+       state: latest
+
+   - name: install apache2
+     ansible.builtin.apt:
+        name: 'apache2'
+        state: present
+
+   - name: create a artifact
+     copy:
+      dest: /var/www/html/index.html
+      content: "scopes app Version 1"
+   
+ 
+   - name: Enable service apache2
+     ansible.builtin.systemd:
+       name: apache2
+       enabled: true
