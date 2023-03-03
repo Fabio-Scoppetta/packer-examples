@@ -24,7 +24,7 @@ source "amazon-ebs" "ubuntu" {
 }
 
 build {
-  name = "packer-amsible"
+  name = "packer-ansible"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
